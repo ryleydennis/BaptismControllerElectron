@@ -4,16 +4,7 @@ document.getElementById("option3"),
 document.getElementById("option4")];
 var statusIcon = document.getElementById("connectionStatus");
 
-var ATEM = require('applest-atem');
-var controller = require('panasonic-camera-controller');
-
-const proP = 9;
-const cam = 6;
-
-var atem = new ATEM();
-atem.connect('192.168.66.9');
-
-var camera = new controller.Camera('192.168.66.13');
+const { ipcRenderer } = require('electron')
 
 var connected = false;
 var suspended = false;
@@ -31,10 +22,10 @@ async function optionClicked(choice) {
                 if (stepOneIsReady && currentStep == 0) {
                     beginNewStep();
     
-                    atem.autoTransition(0);
+                    autoTransition(0);
     
                     await wait(1000);
-                    camera.moveToPreset(3);
+                    moveCamToPreset(3);
     
                     await wait(2300);
                     endStep();
@@ -44,8 +35,8 @@ async function optionClicked(choice) {
                 if (currentStep == 1) {
                     beginNewStep();
     
-                    atem.autoTransition(0);
-                    atem.autoTransition(1);
+                    autoTransition(0);
+                    autoTransition(1);
     
                     await wait (1000);
                     endStep();
@@ -55,8 +46,8 @@ async function optionClicked(choice) {
                 if (currentStep == 2) {
                     beginNewStep();
     
-                    atem.autoTransition(0);
-                    atem.autoTransition(1);
+                    autoTransition(0);
+                    autoTransition(1);
     
                     await wait (1000);
                     endStep();
@@ -65,10 +56,10 @@ async function optionClicked(choice) {
             case 4:
                 if (currentStep == 3) {
                     beginNewStep();
-                    camera.moveToPreset(1);
+                    moveCamToPreset(1);
     
                     await wait(2300);
-                    atem.autoTransition(0);
+                    autoTransition(1);
     
                     await wait(1000)
                     beginNewStep();
@@ -78,19 +69,25 @@ async function optionClicked(choice) {
                 currentStep = 0
                 suspended = true
                 colorOptions(currentStep, true)
-                camera.moveToPreset(1);
-    
-                atem.changeProgramInput(proP,1);
-                atem.changePreviewInput(cam,1);
-        
-                atem.changeProgramInput(cam,0);
-                atem.changePreviewInput(proP,0);
+                reset()
     
                 await wait(2300)
                 endStep();
                 break;
         }
     }
+}
+
+function autoTransition(me) {
+    ipcRenderer.send('autoTransition', me)
+}
+
+function moveCamToPreset(cam) {
+    ipcRenderer.send('moveCamToPreset', cam)
+}
+
+function reset() {
+    ipcRenderer.send('reset')
 }
 
 function beginNewStep() {
@@ -159,74 +156,22 @@ var wait = ms => new Promise((r, j) => setTimeout(r, ms))
 function confirmReset() {
     var response = confirm("Are you sure you want to reset?");
     if (response == true) {
-        optionClicked(5)
+        optionClicked(5);
     }
 }
 
 function stepOneIsReady() {
-    return true;
-    // if (checkProgramStatus(proP, 0) 
-    //     && checkPreviewStatus(cam, 0)
-    //     && checkProgramStatus(cam, 1)
-    //     && checkPreviewStatus(proP,1)) {
-    //     return true;
-    // } else {
-    //     return false;
-    // }
-}
-
-function checkProgramStatus(source, me) {
-    if (connected 
-        && atem.state.topology.numberOfMEs > me 
-        && atem.state.topology.numberOfSources > source
-        && atem.video.ME[me].programInput == source) {
-            return true
-    } else { 
-        return false
-    }
-}
-
-function checkPreviewStatus(source, me) {
-    if (connected
-        && atem.state.topology.numberOfMEs > me 
-        && atem.state.topology.numberOfSources > source
-        && atem.video.ME[me].previewInput == source) {
-            return true
-    } else { 
-        return false
-    }
+    var r = ipcRenderer.sendSync('stepOneIsReady');
+    return r;
 }
 
 function reconnect() {
-    var atem = new ATEM();
-    atem.connect('192.168.66.9');
-    
-    var camera = new controller.Camera('192.168.66.13');
+    ipcRenderer.send('reconnect');
 }
 
 function checkConnection() {
-    if (typeof atem.connectionState.Established !== 'undefined' &&
-        atem.connectionState == ATEM.connectionState.Established) {
-        connected = true
-        statusIcon.src = "images/status green.svg"
-    } else {
-        connected = false
-        statusIcon.src = "images/status red.svg"
-    }
-
-    // atem.on('ping', (err, state) => {
-        
-    // });
-
-    // try {
-    //     var response = await getData(urlprefix + 'status');
-    //     if (response.status == 200) {
-    //         statusIcon.src = "/images/status green.svg"
-    //     } else {
-    //         statusIcon.src = redStatusImage
-    //     }
-    // } catch (error) {
-    //     statusIcon.src = redStatusImage
-    // }
+    connected = ipcRenderer.sendSync('checkConnection');
+    statusIcon.src = connected ? "images/status green.svg" : "images/status red.svg";
+    return connected;
 }
 
