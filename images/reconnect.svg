@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="108px" height="73px" viewBox="0 0 108 73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>reconnect</title>
+    <desc>Created with Sketch.</desc>
+    <g id="reconnect" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M53.6666667,33.8636959 L53.6666667,38.5819135 L60,32.2909567 L53.6666667,26 L53.6666667,30.7182176 C46.6683333,30.7182176 41,36.3486239 41,43.3001311 C41,45.7693316 41.7283333,48.0655308 42.9633333,50 L45.275,47.7038008 C44.5625,46.3984273 44.1666667,44.8885976 44.1666667,43.3001311 C44.1666667,38.0943644 48.4258333,33.8636959 53.6666667,33.8636959 Z" id="Path" fill="#3E3E3E" fill-rule="nonzero"></path>
+        <path d="M64.0366667,37 L61.725,39.2961992 C62.4216667,40.6173001 62.8333333,42.1114024 62.8333333,43.6998689 C62.8333333,48.9056356 58.5741667,53.1363041 53.3333333,53.1363041 L53.3333333,48.4180865 L47,54.7090433 L53.3333333,61 L53.3333333,56.2817824 C60.3316667,56.2817824 66,50.6513761 66,43.6998689 C66,41.2306684 65.2716667,38.9344692 64.0366667,37 L64.0366667,37 Z" id="Path" fill="#3E3E3E" fill-rule="nonzero"></path>
+        <text fill="#3E3E3E" font-family="Gotham-Bold, Gotham" font-size="18" font-weight="bold">
+            <tspan x="8.271" y="18">reconnect</tspan>
+        </text>
+    </g>
+</svg>
