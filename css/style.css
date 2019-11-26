@@ -20,6 +20,13 @@
 .status {
     width: 110px;
     height: auto;
+    float:right;
+}
+
+.reconnect {
+    width: 110px;
+    height: auto;
+    float:left;
 }
 
 .reset {
