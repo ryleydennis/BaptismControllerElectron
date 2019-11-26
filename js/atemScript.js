@@ -25,7 +25,7 @@ colorOptions(currentStep, false)
 
 async function optionClicked(choice) {
  
-    if (suspended == false) {
+    if (suspended == false && connected == true) {
         switch (choice) {
             case 1:
                 if (stepOneIsReady && currentStep == 0) {
