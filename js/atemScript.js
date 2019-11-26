@@ -59,7 +59,7 @@ async function optionClicked(choice) {
                     moveCamToPreset(1);
     
                     await wait(2300);
-                    autoTransition(1);
+                    autoTransition(0);
     
                     await wait(1000)
                     beginNewStep();
