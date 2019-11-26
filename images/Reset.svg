@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="388px" height="91px" viewBox="0 0 388 91" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>Reset</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Disabled" transform="translate(-336.000000, -704.000000)" fill="#3E3E3E">
+            <path d="M465.67792,718.322323 C461.292818,713.942498 455.078348,711.416709 448.245121,712.115332 C438.371916,713.109525 430.24737,721.116813 429.144369,730.978137 C427.664733,744.010132 437.753159,755 450.478026,755 C459.059913,755 466.431189,749.975293 469.874705,742.747238 C470.735584,740.946941 469.444266,738.877944 467.453483,738.877944 C466.458092,738.877944 465.516505,739.415346 465.086066,740.302059 C462.046087,746.831492 454.755518,750.969486 446.792388,749.19606 C440.82004,747.879425 436.004498,743.015939 434.740082,737.050778 C432.480275,726.625182 440.416503,717.38187 450.478026,717.38187 C454.943836,717.38187 458.925401,719.235906 461.830867,722.164746 L457.768595,726.22213 C456.073739,727.914946 457.257448,730.816916 459.651767,730.816916 L469.309753,730.816916 C470.789389,730.816916 472,729.607762 472,728.129907 L472,718.483544 C472,716.092105 469.094533,714.882951 467.399678,716.575767 L465.67792,718.322323 Z" id="Path" fill-rule="nonzero"></path>
+            <text id="Reset" font-family="Helvetica-Bold, Helvetica" font-size="36" font-weight="bold" letter-spacing="2.4">
+                <tspan x="485" y="747">Reset</tspan>
+            </text>
+            <text id="Caution:-This-is-abr" font-family="Helvetica-Bold, Helvetica" font-size="16" font-weight="bold" letter-spacing="1.06666667">
+                <tspan x="345" y="780">Caution: This is abrupt. Use as last resort!</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

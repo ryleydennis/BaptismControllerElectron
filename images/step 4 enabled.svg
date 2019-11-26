@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="693px" height="104px" viewBox="0 0 693 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>step 4 enabled</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Enabled" transform="translate(-227.000000, -544.000000)">
+            <text id="Return-Video" font-family="Helvetica-Bold, Helvetica" font-size="36" font-weight="bold" letter-spacing="7.5" fill="#3E3E3E">
+                <tspan x="411" y="618">Return Video</tspan>
+            </text>
+            <g id="Group-3" transform="translate(345.000000, 602.000000) rotate(-180.000000) translate(-345.000000, -602.000000) translate(298.000000, 575.000000)" fill-rule="nonzero">
+                <g id="videocam-24px-copy" transform="translate(11.742857, 0.000000)" fill="#3E3E3E">
+                    <path d="M63.7777778,20.25 L63.7777778,4.5 C63.7777778,2.025 61.7277778,0 59.2222222,0 L4.55555556,0 C2.05,0 0,2.025 0,4.5 L0,49.5 C0,51.975 2.05,54 4.55555556,54 L59.2222222,54 C61.7277778,54 63.7777778,51.975 63.7777778,49.5 L63.7777778,33.75 L74.21,44.055 C77.08,46.89 82,44.865 82,40.86 L82,13.095 C82,9.09 77.08,7.065 74.21,9.9 L63.7777778,20.25 Z" id="Path"></path>
+                </g>
+                <g id="keyboard_backspace-24px-copy-3" transform="translate(32.500000, 27.500000) rotate(-180.000000) translate(-32.500000, -27.500000) translate(0.000000, 8.000000)" fill="#FFFFFF">
+                    <path d="M60.6171599,15.9926174 L12.6785846,15.9926174 L23.1617355,5.94161074 C24.5813288,4.58053691 24.5813288,2.38187919 23.1617355,1.02080537 C21.7421421,-0.340268456 19.4489529,-0.340268456 18.0293595,1.02080537 L1.32183787,17.0395973 C-0.0977554793,18.4006711 -0.0977554793,20.5993289 1.32183787,21.9604027 L18.0293595,37.9791946 C19.4489529,39.3402685 21.7421421,39.3402685 23.1617355,37.9791946 C24.5813288,36.6181208 24.5813288,34.4194631 23.1617355,33.0583893 L12.6785846,22.9724832 L60.6171599,22.9724832 C62.6191505,22.9724832 64.2571429,21.4020134 64.2571429,19.4825503 C64.2571429,17.5630872 62.6191505,15.9926174 60.6171599,15.9926174 Z" id="Path"></path>
+                </g>
+            </g>
+            <text id="4" font-family="Helvetica-Bold, Helvetica" font-size="60" font-weight="bold" letter-spacing="12.5" fill="#3E3E3E">
+                <tspan x="239" y="618">4</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

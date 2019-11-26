@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="693px" height="104px" viewBox="0 0 693 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>step 2 disabled</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Disabled" transform="translate(-227.000000, -337.000000)">
+            <text id="Switch-To-Baptism" font-family="Helvetica-Bold, Helvetica" font-size="36" font-weight="bold" letter-spacing="7.5" fill="#3E3E3E">
+                <tspan x="411" y="402">Switch To Baptism</tspan>
+            </text>
+            <g id="Group-2-Copy" transform="translate(324.000000, 367.000000)">
+                <rect id="Rectangle-Copy" stroke="#3E3E3E" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="57" height="56"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" fill="#3E3E3E" x="4.5" y="7.5" width="34" height="28"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" fill="#3E3E3E" x="12.5" y="14.5" width="34" height="28"></rect>
+                <rect id="Rectangle" stroke="#FFFFFF" fill="#3E3E3E" x="21.5" y="22.5" width="34" height="28"></rect>
+            </g>
+            <g id="Group-Copy" transform="translate(298.000000, 347.000000)">
+                <rect id="Rectangle" stroke="#3E3E3E" stroke-width="2" fill="#FFFFFF" x="1" y="1" width="57" height="56"></rect>
+                <rect id="Rectangle" fill="#3E3E3E" x="32" y="35" width="19" height="23" rx="5"></rect>
+                <rect id="Rectangle-Copy-2" fill="#3E3E3E" x="8" y="32" width="22" height="26" rx="5"></rect>
+                <rect id="Rectangle" fill="#3E3E3E" x="32" y="49" width="19" height="9"></rect>
+                <rect id="Rectangle-Copy-3" fill="#3E3E3E" x="8" y="48" width="22" height="10"></rect>
+                <ellipse id="Oval" stroke="#3E3E3E" fill="#3E3E3E" cx="41.5" cy="24" rx="9" ry="8.5"></ellipse>
+                <ellipse id="Oval-Copy" stroke="#3E3E3E" fill="#3E3E3E" cx="19" cy="19.5" rx="10.5" ry="10"></ellipse>
+            </g>
+            <text id="2" font-family="Helvetica-Bold, Helvetica" font-size="60" font-weight="bold" letter-spacing="12.5" fill="#3E3E3E">
+                <tspan x="239" y="411">2</tspan>
+            </text>
+            <rect id="Rectangle" fill-opacity="0.751174607" fill="#FFFFFF" x="162" y="239" width="758" height="429"></rect>
+        </g>
+    </g>
+</svg>

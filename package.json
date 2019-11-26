@@ -1,0 +1,18 @@
+{
+  "name": "baptismcontroller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "applest-atem": "^0.2.4",
+    "panasonic-camera-controller": "git+https://github.com/imec-int/panasonic-camera-controller.git"
+  },
+  "devDependencies": {
+    "electron": "^7.1.2"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC"
+}

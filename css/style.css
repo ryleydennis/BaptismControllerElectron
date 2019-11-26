@@ -1,0 +1,33 @@
+.logo {
+   text-align: center; 
+}
+
+.option {
+    text-align: center;
+    outline-style:none;
+}
+
+.optionSelected {
+    outline-style:none;
+    text-align: center;
+    border: 3px solid #00aaff;
+}
+
+.statusDiv {
+    text-align: right;
+}
+
+.status {
+    width: 110px;
+    height: auto;
+}
+
+.reset {
+    margin: 150px;
+    text-align: center;
+}
+
+.resetImage {
+    width: 200px;
+    height: auto;
+}
