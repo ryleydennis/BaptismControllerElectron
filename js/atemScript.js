@@ -26,7 +26,7 @@ colorOptions(currentStep, false)
 
 async function optionClicked(choice) {
 
-    if (!suspended && choiceIsAvailable(choice)) {
+    if (connected && !suspended && choiceIsAvailable(choice)) {
         beginNewStep(choice);
         switch (choice) {
             //Prepare camera on batism
@@ -169,9 +169,7 @@ function reconnect() {
 }
 
 function checkConnection() {
-    return true
-    // connected = ipcRenderer.sendSync('checkConnection');
-    // statusIcon.src = connected ? "images/status green.svg" : "images/status red.svg";
-    // return connected;
+    connected = ipcRenderer.sendSync('checkConnection');
+    statusIcon.src = connected ? "images/status green.svg" : "images/status red.svg";
 }
 
