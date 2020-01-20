@@ -9,6 +9,7 @@ const { ipcRenderer } = require('electron')
 var connected = false;
 var suspended = false;
 var currentStep = 0;
+var previousStep = -1;
 
 checkConnection();
 setInterval(checkConnection, 1000);
@@ -16,16 +17,16 @@ colorOptions(currentStep, false)
 
 async function optionClicked(choice) {
  
-    if (suspended == false && connected == true) {
+    if (true) {
         switch (choice) {
             case 1:
-                if (stepOneIsReady && currentStep == 0) {
+                if (currentStep == 0) {
                     beginNewStep();
     
-                    autoTransition(0);
+                    // autoTransition(0);
     
                     await wait(1000);
-                    moveCamToPreset(3);
+                    // moveCamToPreset(3);
     
                     await wait(2300);
                     endStep();
@@ -35,8 +36,8 @@ async function optionClicked(choice) {
                 if (currentStep == 1) {
                     beginNewStep();
     
-                    autoTransition(0);
-                    autoTransition(1);
+                    // autoTransition(0);
+                    // autoTransition(1);
     
                     await wait (1000);
                     endStep();
@@ -46,8 +47,8 @@ async function optionClicked(choice) {
                 if (currentStep == 2) {
                     beginNewStep();
     
-                    autoTransition(0);
-                    autoTransition(1);
+                    // autoTransition(0);
+                    // autoTransition(1);
     
                     await wait (1000);
                     endStep();
@@ -56,10 +57,10 @@ async function optionClicked(choice) {
             case 4:
                 if (currentStep == 3) {
                     beginNewStep();
-                    moveCamToPreset(1);
+                    // moveCamToPreset(1);
     
                     await wait(2300);
-                    autoTransition(0);
+                    // autoTransition(0);
     
                     await wait(1000)
                     beginNewStep();
@@ -113,14 +114,14 @@ function colorOptions(step, suspended) {
     for (i = 1; i <= options.length; i++) {
         //Select dark (enabled) or light (disabled) image
         //If App is suspended all options are disabled
-        if (suspended) {
-            var loc = getImageLocation(false, i);
-            options[i - 1].src = loc;
-        } else {
-            var enabled = i == getNextStep(step);
+        // if (suspended && (i != currentStep  && i != 2)) {
+        //     var loc = getImageLocation(false, i);
+        //     options[i - 1].src = loc;
+        // } else {
+            var enabled = true
             var loc = getImageLocation(enabled, i);
             options[i - 1].src = loc;
-        }
+        // }
 
         //Draw border around last successfully selected step
         if (step == i) {
@@ -170,8 +171,9 @@ function reconnect() {
 }
 
 function checkConnection() {
-    connected = ipcRenderer.sendSync('checkConnection');
-    statusIcon.src = connected ? "images/status green.svg" : "images/status red.svg";
-    return connected;
+    return true
+    // connected = ipcRenderer.sendSync('checkConnection');
+    // statusIcon.src = connected ? "images/status green.svg" : "images/status red.svg";
+    // return connected;
 }
 

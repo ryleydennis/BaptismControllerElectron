@@ -93,15 +93,15 @@ ipcMain.on('checkConnection', (event, arg) => {
 
 
 ipcMain.on('stepOneIsReady', (event, arg) => {
-  // if (checkProgramStatus(proP, 0) 
-  //     && checkPreviewStatus(cam, 0)
-  //     && checkProgramStatus(cam, 1)
-  //     && checkPreviewStatus(proP,1)) {
-  //     event.returnValue = true;
-  // } else {
-  //     event.returnValue = false;
-  // }
-  return true;
+  if (checkProgramStatus(proP, 0) 
+      && checkPreviewStatus(cam, 0)
+      && checkProgramStatus(cam, 1)
+      && checkPreviewStatus(proP,1)) {
+      event.returnValue = true;
+  } else {
+      event.returnValue = false;
+  }
+  // return true;
 })
 
 ipcMain.on('moveCamToPreset', (event, arg) => {
@@ -109,10 +109,10 @@ ipcMain.on('moveCamToPreset', (event, arg) => {
 })
 
 function checkProgramStatus(source, me) {
-  if (connected 
+  if (atem.connectionState == 2 
       && atem.state.topology.numberOfMEs > me 
       && atem.state.topology.numberOfSources > source
-      && atem.video.ME[me].programInput == source) {
+      && atem.state.video.ME[me].programInput == source) {
           return true
   } else { 
       return false
@@ -120,10 +120,10 @@ function checkProgramStatus(source, me) {
 }
 
 function checkPreviewStatus(source, me) {
-  if (connected
+  if (atem.connectionState == 2
       && atem.state.topology.numberOfMEs > me 
       && atem.state.topology.numberOfSources > source
-      && atem.video.ME[me].previewInput == source) {
+      && atem.state.video.ME[me].previewInput == source) {
           return true
   } else { 
       return false
