@@ -1,16 +1,17 @@
 {
   "name": "baptismcontroller",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "main.js",
-  "productName": "Baptism Controller",
+  "productName": "Baptism Controller 2.0",
   "dependencies": {
     "applest-atem": "^0.2.4",
+    "electron-is-dev": "^1.1.0",
     "panasonic-camera-controller": "git+https://github.com/imec-int/panasonic-camera-controller.git"
   },
   "devDependencies": {
     "electron": "^7.1.2",
-    "electron-builder": "^21.2.0"
+    "electron-builder": "^22.2.0"
   },
   "scripts": {
     "start": "electron .",

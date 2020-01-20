@@ -1,6 +1,7 @@
 const { app, BrowserWindow, screen, ipcMain} = require('electron')
 var ATEM = require('applest-atem');
 var controller = require('panasonic-camera-controller');
+const isDev = require('electron-is-dev');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -14,30 +15,30 @@ atem.connect('192.168.66.9');
 var camera = new controller.Camera('192.168.66.13');
 
 function createWindow () {
-  // Create the browser window.
-  // win = new BrowserWindow({
-  //   width: 830,
-  //   height: 815,
-  //   webPreferences: {
-  //     nodeIntegration: true
-  //   }
-  // })
-
-  const { width, height } = screen.getPrimaryDisplay().workAreaSize
-  win = new BrowserWindow({
-  width: width,
-  height: height,
-  webPreferences: {
-    nodeIntegration: true
+  if (isDev) {
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize
+    win = new BrowserWindow({
+      width: width,
+      height: height,
+      webPreferences: {
+        nodeIntegration: true
+      }
+    })
+    // Open the DevTools.
+    win.webContents.openDevTools()
+  } else {
+    win = new BrowserWindow({
+      width: 830,
+      height: 815,
+      webPreferences: {
+        nodeIntegration: true
+      }
+    })
   }
-  })
-
 
   // and load the index.html of the app.
   win.loadFile('BaptismController.html')
 
-  // Open the DevTools.
-  win.webContents.openDevTools()
 
   // Emitted when the window is closed.
   win.on('closed', () => {

@@ -72,7 +72,7 @@ async function optionClicked(choice) {
                 currentStep = 0;
                 reset();
     
-                await sleep(2300);
+                await sleep(1500);
                 break;
 
         }
