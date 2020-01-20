@@ -65,14 +65,14 @@ async function optionClicked(choice) {
 
                 reset();
 
-                await sleep(2300);
+                await sleep(1000);
                 break;
 
             case 5:
                 currentStep = 0;
                 reset();
     
-                await sleep(1500);
+                await sleep(2300);
                 break;
 
         }
