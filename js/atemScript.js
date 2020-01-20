@@ -136,14 +136,6 @@ function colorOptions(selectedStep, suspended) {
     };
 }
 
-function getNextStep(step) {
-    if (step <= 3) {
-        return step + 1;
-    } else {
-        return 0;
-    }
-}
-
 function getImageLocation(isEnabled, val) {
     var prefix = "images/step ";
     var enabled = " enabled.svg";
