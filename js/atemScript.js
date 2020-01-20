@@ -13,10 +13,10 @@ var currentStep = 0;
 var previousStep = -1;
 
 //enabled choies for each step
-let step0 = [1]
-let step1 = [2]
-let step2 = [3]
-let step3 = [2,4]
+let step0 = [1,5]
+let step1 = [2,5]
+let step2 = [3,5]
+let step3 = [2,4,5]
 let enabledAtStep = [step0, step1, step2, step3]
 
 
@@ -27,7 +27,7 @@ colorOptions(currentStep, false)
 async function optionClicked(choice) {
 
     if (!suspended && choiceIsAvailable(choice)) {
-        beginNewStep(choice)
+        beginNewStep(choice);
         switch (choice) {
             //Prepare camera on batism
             case 1:
@@ -61,14 +61,22 @@ async function optionClicked(choice) {
                 await sleep(2300);
                 autoTransition(0);
 
-                await sleep(1000)
+                await sleep(1000);
 
-                reset()
+                reset();
 
-                await sleep(2300)
+                await sleep(2300);
                 break;
+
+            case 5:
+                currentStep = 0;
+                reset();
+    
+                await sleep(2300);
+                break;
+
         }
-        endStep()
+        endStep();
     }
 }
 
@@ -106,10 +114,11 @@ function endStep() {
 }
 
 function colorOptions(selectedStep, suspended) {
+    let enabledSteps = enabledAtStep[selectedStep]
     for (i = 1; i <= options.length; i++) {
         //Select dark (enabled) or light (disabled) image
         //If App is suspended all options are disabled
-        if (suspended || !stepIsEnabled(selectedStep)) {
+        if (suspended || !enabledSteps.includes(i)) {
             var loc = getImageLocation(false, i);
             options[i - 1].src = loc;
         } else {
@@ -125,15 +134,6 @@ function colorOptions(selectedStep, suspended) {
             options[i - 1].className = "option"
         }
     };
-}
-
-function stepIsEnabled(selectedStep) {
-    let enabledSteps = enabledAtStep[selectedStep]
-    if (typeof enabledSteps == 'undefined') {
-        return false
-    } else {
-        return enabledSteps.filter(step => step == selectedStep)
-    }
 }
 
 function getNextStep(step) {
