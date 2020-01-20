@@ -6,76 +6,69 @@ var statusIcon = document.getElementById("connectionStatus");
 
 const { ipcRenderer } = require('electron')
 
+//connection state & enabledAtStep
 var connected = false;
 var suspended = false;
 var currentStep = 0;
 var previousStep = -1;
+
+//enabled choies for each step
+let step0 = [1]
+let step1 = [2]
+let step2 = [3]
+let step3 = [2,4]
+let enabledAtStep = [step0, step1, step2, step3]
+
 
 checkConnection();
 setInterval(checkConnection, 1000);
 colorOptions(currentStep, false)
 
 async function optionClicked(choice) {
- 
-    if (true) {
+
+    if (!suspended && choiceIsAvailable(choice)) {
+        beginNewStep(choice)
         switch (choice) {
+            //Prepare camera on batism
             case 1:
-                if (currentStep == 0) {
-                    beginNewStep();
-    
-                    // autoTransition(0);
-    
-                    await wait(1000);
-                    // moveCamToPreset(3);
-    
-                    await wait(2300);
-                    endStep();
-                } 
+                autoTransition(0);
+
+                await sleep(1000);
+                moveCamToPreset(3);
+
+                await sleep(2300);
+
                 break;
+            //Auto transition both inputs to show baptism
             case 2:
-                if (currentStep == 1) {
-                    beginNewStep();
-    
-                    // autoTransition(0);
-                    // autoTransition(1);
-    
-                    await wait (1000);
-                    endStep();
-                }
+                autoTransition(0);
+                autoTransition(1);
+
+                await sleep(1000);
                 break;
+            //Auto transition both inputs to hide baptism
             case 3:
-                if (currentStep == 2) {
-                    beginNewStep();
-    
-                    // autoTransition(0);
-                    // autoTransition(1);
-    
-                    await wait (1000);
-                    endStep();
-                }
+                autoTransition(0);
+                autoTransition(1);
+
+                await sleep(1000);
                 break;
+            //Move camera away from baptism and show slides on main
             case 4:
-                if (currentStep == 3) {
-                    beginNewStep();
-                    // moveCamToPreset(1);
-    
-                    await wait(2300);
-                    // autoTransition(0);
-    
-                    await wait(1000)
-                    beginNewStep();
-                }
-                break;
-            case 5:
-                currentStep = 0
-                suspended = true
-                colorOptions(currentStep, true)
+                //step 4 resets the options, going back to 0
+                moveCamToPreset(1);
+
+                await sleep(2300);
+                autoTransition(0);
+
+                await sleep(1000)
+
                 reset()
-    
-                await wait(2300)
-                endStep();
+
+                await sleep(2300)
                 break;
         }
+        endStep()
     }
 }
 
@@ -91,15 +84,17 @@ function reset() {
     ipcRenderer.send('reset')
 }
 
-function beginNewStep() {
-    if (currentStep <= 3) {
-        currentStep += 1
-        suspended = true
-        
-    } else {
+function choiceIsAvailable(choice) {
+    return enabledAtStep[currentStep].includes(choice)
+}
+
+function beginNewStep(choice) {
+    if (choice >= 4) {
         currentStep = 0
-        suspended = false
+    } else {
+        currentStep = choice
     }
+    suspended = true
     console.log("suspended: " + suspended)
     colorOptions(currentStep, suspended)
 }
@@ -110,26 +105,35 @@ function endStep() {
     colorOptions(currentStep, suspended)
 }
 
-function colorOptions(step, suspended) {
+function colorOptions(selectedStep, suspended) {
     for (i = 1; i <= options.length; i++) {
         //Select dark (enabled) or light (disabled) image
         //If App is suspended all options are disabled
-        // if (suspended && (i != currentStep  && i != 2)) {
-        //     var loc = getImageLocation(false, i);
-        //     options[i - 1].src = loc;
-        // } else {
+        if (suspended || !stepIsEnabled(selectedStep)) {
+            var loc = getImageLocation(false, i);
+            options[i - 1].src = loc;
+        } else {
             var enabled = true
             var loc = getImageLocation(enabled, i);
             options[i - 1].src = loc;
-        // }
+        }
 
         //Draw border around last successfully selected step
-        if (step == i) {
+        if (selectedStep == i) {
             options[i - 1].className = "optionSelected"
         } else {
             options[i - 1].className = "option"
         }
     };
+}
+
+function stepIsEnabled(selectedStep) {
+    let enabledSteps = enabledAtStep[selectedStep]
+    if (typeof enabledSteps == 'undefined') {
+        return false
+    } else {
+        return enabledSteps.filter(step => step == selectedStep)
+    }
 }
 
 function getNextStep(step) {
@@ -152,7 +156,9 @@ function getImageLocation(isEnabled, val) {
     }
 }
 
-var wait = ms => new Promise((r, j) => setTimeout(r, ms))
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function confirmReset() {
     var response = confirm("Are you sure you want to reset?");
